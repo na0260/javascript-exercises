@@ -1,0 +1,10 @@
+// Write a function that calculates the factorial of a number.
+
+function fact(n){
+    if (n === 0 || n === 1)
+        return 1;
+    else
+        return n * fact(n-1);
+}
+
+console.log(fact(5));
