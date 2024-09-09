@@ -3,11 +3,15 @@
 async function fetch(){
     const data = await new Promise(resolve => {
         setTimeout(() => {
-            resolve('Data fetched')
+            resolve('Data fetched.')
         }, 2000)
     })
     console.log(data);
 }
 
-fetch();
+fetch().then(() =>
+    console.log('Fetched complete.')
+).catch(err=>
+    console.log("Error:",err)
+);
 console.log('Fetching data...');
