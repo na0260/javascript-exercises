@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worker exercise</title>
+</head>
+<body>
+    <button onclick="startWorker()">Start</button>
+    <button onclick="stopWorker()">Stop</button>
+    <p>Count: <span id="output"></span></p>
+
+    <script>
+        let w;
+        function startWorker() {
+            if (typeof(Worker) !== "undefined") {
+                if (typeof(w) == "undefined") {
+                    w = new Worker("worker.js");
+                }
+                w.onmessage = function(event) {
+                    document.getElementById("output").innerHTML = event.data;
+                };
+            } else {
+                document.getElementById("output").innerHTML = "Browser does not support Web Workers.";
+            }
+        }
+        function stopWorker() {
+            w.terminate();
+            w = undefined;
+        }
+    </script>
+</body>
+</html>
