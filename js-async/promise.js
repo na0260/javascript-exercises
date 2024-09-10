@@ -9,9 +9,5 @@ async function fetch(){
     console.log(data);
 }
 
-fetch().then(() =>
-    console.log('Fetched complete.')
-).catch(err=>
-    console.log("Error:",err)
-);
+fetch();
 console.log('Fetching data...');
